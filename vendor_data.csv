@@ -1,0 +1,3 @@
+vendor_name,item_code,expected_delivery_date,actual_delivery_date,ordered_qty,rejected_qty,freight_cost,location_risk
+Vendor A,Item A,2025-07-20,2025-07-22,100,2,500,3
+Vendor B,Item B,2025-07-18,2025-07-20,200,10,700,7
