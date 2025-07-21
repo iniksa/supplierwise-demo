@@ -10,7 +10,7 @@ config = load_config()
 
 df = pd.read_csv("inventory_data.csv")
 df["Next PO Delivery Date"] = pd.to_datetime(df["Next PO Delivery Date"], errors="coerce")
-df["Expected Days Left"] = df["Current Stock (Qty)"] / df["Daily Avg Consumption"]
+df["Expected Days Left"] = df["Current Stock (Qty)"] / df["Daily Avg Consumption"].replace(0, np.nan)
 df["Buffer Breach Risk"] = df["Expected Days Left"] < config["min_stock_buffer_days"]
 df["Expected Delay (days)"] = (df["Next PO Delivery Date"] - pd.Timestamp(datetime.today())).dt.days.fillna(0)
 
