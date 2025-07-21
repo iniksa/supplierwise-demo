@@ -2,4 +2,6 @@ streamlit
 pandas
 numpy
 matplotlib
+plotly
 st_aggrid
+pyarrow
