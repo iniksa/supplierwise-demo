@@ -1,4 +1,3 @@
-
 import json
 import os
 
@@ -18,8 +17,11 @@ def load_config():
     try:
         with open(CONFIG_PATH, "r") as f:
             config = json.load(f)
-    except:
+            if not isinstance(config, dict) or not config:  # Check for empty or invalid format
+                raise ValueError("Invalid config format")
+    except Exception:
         config = DEFAULT_CONFIG
+        save_config(config)  # Overwrite with default if unreadable
     return {**DEFAULT_CONFIG, **config}
 
 def save_config(config):
